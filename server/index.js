@@ -1,5 +1,7 @@
 // IMPORTS FROM PACKAGES
 const express = require("express");
+var cors = require('cors')
+
 const mongoose = require("mongoose");
 const adminRouter = require("./routes/admin");
 // IMPORTS FROM OTHER FILES
@@ -12,9 +14,9 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 const DB =
   "mongodb://localhost:27017/shopthanhtungdeptrai";
-
 // middleware
 app.use(express.json());
+app.use(cors());
 app.use(authRouter);
 app.use(adminRouter);
 app.use(productRouter);
@@ -30,6 +32,6 @@ mongoose
     console.log(e);
   });
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`connected at port ${PORT}`);
-});
+  app.listen(3000, function () {
+    console.log('CORS-enabled web server listening on port 3000')
+  })

@@ -23,19 +23,20 @@ class AuthService {
       User user = User(
         id: '',
         name: name,
-        password: password,
+        password: password, 
         email: email,
         address: '',
         type: '',
         token: '',
         cart: [],
       );
-
+      
+      print('$uri/api/signup');
       http.Response res = await http.post(
-        Uri.parse('$uri/api/signup'),
+        Uri.parse('http://localhost:3000/api/signup'),
         body: user.toJson(),
         headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
+          'Content-Type': 'application/json',
         },
       );
 
